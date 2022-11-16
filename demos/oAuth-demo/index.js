@@ -1,53 +1,48 @@
-// Fill in your client ID and client secret that you obtained
-// while registering the application
-const clientID = '86AS7WMGfcYAHzbJCM4NSRF-EzC8ZcKVW5ZkdDaLSg0'
-const clientSecret = '5E83TJO4Zp6eDDfh9DrzjcmKZBTHsynSmMNQOqMXaPM'
-const redirect_url = 'http://localhost:8080/oauth/redirect'
-//
+require('dotenv').config();
 const Koa = require('koa');
 const path = require('path');
 const serve = require('koa-static');
 const route = require('koa-route');
 const axios = require('axios');
 
+
+
 const app = new Koa();
 
+//get client id and secret from .env file
+const clientID = process.env.CLIENT_ID;
+const clientSecret = process.env.CLIENT_SECRET;
+
+//serve the index.html file
 const main = serve(path.join(__dirname + '/public'));
 
+//get the access token
 const oauth = async ctx => {
     const requestToken = ctx.request.query.code;
     console.log('authorization code:', requestToken);
 
-    const tokenResponse = await axios({
-        method: 'post',
-        url: 'https://api.gusto-demo.com/oauth/authorize?' +
-        `client_id=${clientID}&` +
-        `client_secret=${clientSecret}&` +
-        `code=${requestToken}`,
-        headers: {
-        accept: 'application/json'
-        }
+    if(!clientID || !clientSecret) {
+        console.log('clientID or clientSecret is missing. Please set the CLIENT_ID and CLIENT_SECRET environment variables.');
+        return;
+    }
+
+    //get the access token by exchanging the authorization code
+    const response = await axios.post('https://api.gusto.com/oauth/token', {
+        client_id: clientID,
+        client_secret: clientSecret,
+        code: requestToken,
+        grant_type: 'authorization_code'
     });
 
-    const accessToken = tokenResponse.data.access_token;
-    console.log(`access token: ${accessToken}`);
 
-    const result = await axios({
-        method: 'get',
-        url: `https://api.gusto-demo.com/me`,
-        headers: {
-        accept: 'application/json',
-        Authorization: `token ${accessToken}`
-        }
-    });
-    console.log(result.data);
-    const name = result.data.name;
+    const accessToken = response.data.access_token;
+    console.log('access token:', accessToken);
 
-    ctx.response.redirect(`/welcome.html?name=${name}`);
-    };
+
+    ctx.response.redirect(`/accessToken.html?accessToken=${accessToken}`);
+};
 
 app.use(main);
-app.use(route.get('/oauth/redirect', oauth));
+app.use(route.get('/oauth/callback', oauth));
 
 app.listen(8080);
-

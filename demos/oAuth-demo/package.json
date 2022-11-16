@@ -1,11 +1,18 @@
 {
   "name": "gusto-oauth-demo",
   "version": "1.0.0",
-  "description": "Gusto OAuth2.0 using node",
-  "main": "../index.js",
-  "license": "MIT",
+  "description": "Demo Gusto OAuth flow using NodeJS",
+  "main": "index.js",
+  "repository": "",
+  "author": "Vyshakh",
+  "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
   "dependencies": {
     "axios": "^0.18.0",
+    "dotenv": "^8.2.0",
     "koa": "^2.7.0",
     "koa-route": "^3.2.0",
     "koa-static": "^5.0.0"

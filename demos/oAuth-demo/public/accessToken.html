@@ -1,0 +1,17 @@
+<html>
+<head>
+    <title>Gusto OAuth2 Demo</title>
+</head>
+<p>
+    Your Access token is :
+</p>
+<body>
+</body>
+<script>
+    const query = window.location.search.substring(1) || '';
+    const accessToken = query.split('accessToken=')[1];
+    document.body.appendChild(
+        document.createTextNode(`${decodeURIComponent(accessToken)}`)
+    );
+</script>
+</html>
