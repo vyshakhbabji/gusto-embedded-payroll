@@ -1,0 +1,1 @@
+{"version":3,"file":"Auth.js","sourceRoot":"","sources":["../../src/platform/Auth.ts"],"names":[],"mappings":";;;AAEA;IAGI,cAAmB,OAAmB;QAClC,IAAI,CAAC,WAAW,GAAG,OAAO,CAAC,UAAU,CAAC;IAC1C,CAAC;IAED,sCAAuB,GAAvB,UAAwB,OAAY;QAChC,OAAO,CAAC,aAAa,GAAG,SAAS,GAAG,IAAI,CAAC,WAAW,CAAC;IACzD,CAAC;IAEL,WAAC;AAAD,CAAC,AAXD,IAWC;AAXY,oBAAI"}

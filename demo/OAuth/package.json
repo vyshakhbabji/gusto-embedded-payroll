@@ -1,0 +1,13 @@
+{
+  "name": "gusto-oauth-demo",
+  "version": "1.0.0",
+  "description": "Gusto OAuth2.0 using node",
+  "main": "../index.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "koa": "^2.7.0",
+    "koa-route": "^3.2.0",
+    "koa-static": "^5.0.0"
+  }
+}
