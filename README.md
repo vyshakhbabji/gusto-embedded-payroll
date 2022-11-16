@@ -23,9 +23,9 @@ npm install
 
 ## Demo Apps
 
-* [SDK Usage Demo](demo/demo-sdk/Readme.md)
-* [OAuth Demo](demo/oAuth-demo/ReadMe.md)
-* [Webhook-Demo](demo/webhook-demo/Readme.md)
+* [SDK Usage Demo](demos/demo-sdk/Readme.md)
+* [OAuth Demo](demos/oAuth-demo/ReadMe.md)
+* [Webhook-Demo](demos/webhook-demo/Readme.md)
 
 ## Documentation
 
